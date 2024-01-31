@@ -3,12 +3,12 @@
     x:Class="StudentDraw.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:StudentDraw"
+    xmlns:pages="clr-namespace:StudentDraw.Pages"
     Shell.FlyoutBehavior="Disabled">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Add/Edit"
+        ContentTemplate="{DataTemplate pages:ManageListPage}"
+        Route="ManageListPage" />
 
 </Shell>
