@@ -54,18 +54,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\GradeFormPage.xaml.cs">
-	    <DependentUpon>GradeFormPage.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="Pages\ManageStudentsPage.xaml.cs">
 	    <DependentUpon>ManageStudentsPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\GradeFormPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Pages\ManageStudentsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

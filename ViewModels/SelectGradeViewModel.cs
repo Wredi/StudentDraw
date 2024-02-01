@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Microsoft.Maui.Controls;
 
 namespace StudentDraw.ViewModels
 {
@@ -51,29 +52,17 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private async Task AddGrade()
         {
-            GradeFormViewModel vm = new GradeFormViewModel
-            {
-                NameToEdit = "",
-            };
-
-            await Shell.Current.Navigation.PushAsync(new GradeFormPage
-            {
-                BindingContext = vm
-            });
+            string result = await Shell.Current.DisplayPromptAsync("Add grade", "Enter new grade name:");
+            App.StudentRepo.AddGrade(result);
+            LoadGrades();
         }
 
         [RelayCommand]
         private async Task EditSelectedGrade()
         {
-            GradeFormViewModel vm = new GradeFormViewModel
-            {
-                NameToEdit = currSelectedGrade,
-            };
-
-            await Shell.Current.Navigation.PushAsync(new GradeFormPage
-            {
-                BindingContext = vm
-            });
+            string result = await Shell.Current.DisplayPromptAsync("Edit grade", "Edit name:", initialValue: currSelectedGrade);
+            App.StudentRepo.EditGradeName(currSelectedGrade, result);
+            LoadGrades();
         }
 
         public RelayCommand<string> PassGradeCommand { get; set; }
