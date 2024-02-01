@@ -16,7 +16,7 @@ namespace StudentDraw.Data
             _filesDirectory = filesDirectory;
         }
 
-        public string FilenameFromGrade(string grade)
+        public string FilepathFromGrade(string grade)
         {
             return Path.Combine(_filesDirectory, $"{grade}.grade.txt");
         }
@@ -32,7 +32,7 @@ namespace StudentDraw.Data
         public IEnumerable<Student> LoadForGrade(string gradeName)
         {
             return File
-                    .ReadAllText(FilenameFromGrade(gradeName))
+                    .ReadAllText(FilepathFromGrade(gradeName))
                     .Split(new string[] { Environment.NewLine }, StringSplitOptions.None)
                     .Select(line => Student.FromText(line));
         }
@@ -40,9 +40,24 @@ namespace StudentDraw.Data
         public void SaveForGrade(string gradeName, IEnumerable<Student> students)
         {
             File.WriteAllText(
-                    FilenameFromGrade(gradeName), 
+                    FilepathFromGrade(gradeName), 
                     students.Aggregate("", (s, v) => s + v + Environment.NewLine)
                 );
+        }
+
+        public void DeleteGrade(string gradeName)
+        {
+            File.Delete(FilepathFromGrade(gradeName));
+        }
+
+        public void AddGrade(string gradeName)
+        {
+            File.Create(FilepathFromGrade(gradeName));
+        }
+
+        public void EditGradeName(string prevGradeName, string newGradeName)
+        {
+            File.Move(FilepathFromGrade(prevGradeName), FilepathFromGrade(newGradeName));
         }
     }
 }
