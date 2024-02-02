@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:StudentDraw.ViewModels"
              x:Class="StudentDraw.Pages.ManageStudentsPage"
              Title="ManageStudentsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ContentPage.BindingContext>
+        <viewModels:ManageStudentsViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout Orientation="Vertical" VerticalOptions="Start">
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Add student" Command="{Binding AddSelectedStudentCommand}"/>
+            <Button Text="Edit student" Command="{Binding EditSelectedStudentCommand}"/>
+            <Button Text="Delete student" Command="{Binding DeleteSelectedStudentCommand}"/>
+            <Button Text="Select grade" Command="{Binding SelectGradeCommand}"/>
+        </StackLayout>
+        <Label Text="{Binding SelectedGrade}" FontSize="Large"/>
+
+        <ListView ItemsSource="{Binding Students}" ItemSelected="OnItemSelectedChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Border Stroke="#333" StrokeThickness="1" Padding="10">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Id}"/>
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Surname}"/>
+                            </StackLayout>
+                        </Border>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>

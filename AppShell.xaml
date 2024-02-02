@@ -6,18 +6,9 @@
     xmlns:pages="clr-namespace:StudentDraw.Pages"
     Shell.FlyoutBehavior="Disabled">
 
-    <!--<ShellContent
-        Title="Add/Edit"
-        ContentTemplate="{DataTemplate pages:ManageListPage}"
-        Route="ManageListPage" />-->
     <ShellContent
-        Title="Test"
-        ContentTemplate="{DataTemplate pages:SelectGradePage}"
-        Route="SelectGradePage" />
-    <!--<ShellContent
-        Title="Test"
-        ContentTemplate="{DataTemplate pages:GradeFormPage}"
-        Route="GradeFormPage" />-->
-
-
+        Title="ManageStudentsPage"
+        ContentTemplate="{DataTemplate pages:ManageStudentsPage}"
+        Route="ManageStudentsPage"/>
+    
 </Shell>

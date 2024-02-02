@@ -7,9 +7,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace StudentDraw.ViewModels
 {
-    class StudentViewModel : ObservableObject
+    public class StudentViewModel : ObservableObject
     {
         private Models.Student student;
+        public Models.Student Model { get { return student; } }
 
         public string Name
         {
@@ -48,6 +49,11 @@ namespace StudentDraw.ViewModels
                     OnPropertyChanged();
                 }
             }
+        }
+
+        public StudentViewModel(Models.Student student)
+        {
+            this.student = student;
         }
     }
 }

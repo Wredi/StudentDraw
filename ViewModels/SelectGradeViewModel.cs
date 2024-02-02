@@ -35,11 +35,12 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private async Task ApproveSelectedGrade()
         {
-            if(PassGradeCommand != null)
-            {
-                PassGradeCommand.Execute(currSelectedGrade);
-                await Shell.Current.Navigation.PopModalAsync();
-            }
+            //if(PassGradeCommand != null)
+            //{
+            //    PassGradeCommand.Execute(currSelectedGrade);
+            //    await Shell.Current.Navigation.PopModalAsync();
+            //}
+            await Shell.Current.GoToAsync($"..?selected={currSelectedGrade}");
         }
 
         [RelayCommand]
@@ -65,7 +66,6 @@ namespace StudentDraw.ViewModels
             LoadGrades();
         }
 
-        public RelayCommand<string> PassGradeCommand { get; set; }
         public SelectGradeViewModel()
         {
             Grades = new ObservableCollection<string>();

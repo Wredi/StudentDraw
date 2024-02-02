@@ -31,5 +31,10 @@ namespace StudentDraw.Models
                 DrawsTillEnabled = int.Parse(entries[4]),
             };
         }
+
+        public bool Compare(Student other)
+        {
+            return Id == other.Id;
+        }
     }
 }

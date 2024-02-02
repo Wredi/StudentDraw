@@ -1,6 +1,7 @@
 ﻿using StudentDraw.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace StudentDraw.Data
         {
             return File
                     .ReadAllText(FilepathFromGrade(gradeName))
-                    .Split(new string[] { Environment.NewLine }, StringSplitOptions.None)
+                    .Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(line => Student.FromText(line));
         }
 
@@ -41,8 +42,18 @@ namespace StudentDraw.Data
         {
             File.WriteAllText(
                     FilepathFromGrade(gradeName), 
-                    students.Aggregate("", (s, v) => s + v + Environment.NewLine)
+                    students.Aggregate("", (s, obj) => s + obj.ToText() + Environment.NewLine)
                 );
+        }
+
+        public void AddStudent(string gradeName, Student student)
+        {
+            File.AppendAllText(FilepathFromGrade(gradeName), student.ToText() + Environment.NewLine);
+        }
+
+        public void EditStudent(string gradeName, Student studentToEdit, Student newStudent)
+        {
+            SaveForGrade(gradeName, LoadForGrade(gradeName).Select(x => x.Compare(studentToEdit) ? newStudent : x));
         }
 
         public void DeleteGrade(string gradeName)

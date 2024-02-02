@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StudentDraw.Data;
+using System.Diagnostics;
 
 namespace StudentDraw
 {
@@ -22,6 +23,8 @@ namespace StudentDraw
 
             string dbPath = FileSystem.AppDataDirectory;
             builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<StudentRepository>(s, dbPath));
+
+            Trace.WriteLine(dbPath);
 
             return builder.Build();
         }
