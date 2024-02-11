@@ -14,6 +14,11 @@ namespace StudentDraw.Models
         public bool IsPresent { get; set; }
         public int DrawsTillEnabled { get; set; }
 
+        public Student()
+        {
+            IsPresent = true;
+        }
+
         public string ToText()
         {
             return $"{Id};{Name};{Surname};{IsPresent};{DrawsTillEnabled}";

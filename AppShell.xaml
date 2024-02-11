@@ -5,7 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:StudentDraw.Pages"
     Shell.FlyoutBehavior="Disabled">
-
+    
+    <ShellContent
+        Title="StudentsBoardPage"
+        ContentTemplate="{DataTemplate pages:StudentsBoardPage}"
+        Route="StudentsBoardPage"/>
+    
     <ShellContent
         Title="ManageStudentsPage"
         ContentTemplate="{DataTemplate pages:ManageStudentsPage}"

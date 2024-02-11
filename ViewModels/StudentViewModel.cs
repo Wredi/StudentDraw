@@ -51,6 +51,32 @@ namespace StudentDraw.ViewModels
             }
         }
 
+        public int DrawsTillEnabled
+        {
+            get => student.DrawsTillEnabled;
+            set
+            {
+                if (student.DrawsTillEnabled != value)
+                {
+                    student.DrawsTillEnabled = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public bool IsPresent
+        {
+            get => student.IsPresent;
+            set
+            {
+                if (student.IsPresent != value)
+                {
+                    student.IsPresent = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public StudentViewModel(Models.Student student)
         {
             this.student = student;

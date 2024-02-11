@@ -35,7 +35,7 @@ namespace StudentDraw.ViewModels
         public ObservableCollection<StudentViewModel> Students { get; set; }
         private StudentViewModel selectedStudent;
 
-        public void LoadStudents()
+        private void LoadStudents()
         {
             if (string.IsNullOrEmpty(selectedGrade))
             {
