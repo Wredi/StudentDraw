@@ -1,0 +1,7 @@
+﻿.tableCell{
+    margin: -1;
+}
+
+#luckyNumberBox, #drawStudentBox {
+    -maui-orientation: horizontal;
+}

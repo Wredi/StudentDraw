@@ -7,6 +7,7 @@
             InitializeComponent();
 
             Routing.RegisterRoute(nameof(Pages.SelectGradePage), typeof(Pages.SelectGradePage));
+            Routing.RegisterRoute(nameof(Pages.ManageStudentsPage), typeof(Pages.ManageStudentsPage));
         }
     }
 }

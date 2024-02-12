@@ -27,6 +27,7 @@ namespace StudentDraw.ViewModels
         public void OnAppearing()
         {
             Grades = App.StudentRepo.GetGradeNames().ToList();
+            Students.Clear();
         }
 
         private void LoadStudents()
@@ -41,6 +42,7 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private void SelectedGradeChanged(string selectedGrade)
         {
+            if (string.IsNullOrEmpty(selectedGrade)) return;
             SelectedGrade = selectedGrade;
             LoadStudents();
         }
@@ -60,6 +62,12 @@ namespace StudentDraw.ViewModels
 
         [ObservableProperty]
         private int drawedStudentId;
+
+        [RelayCommand]
+        private async Task ManageStudents()
+        {
+            await Shell.Current.GoToAsync(nameof(Pages.ManageStudentsPage));
+        }
 
         [RelayCommand]
         private void DrawStudent()

@@ -4,34 +4,72 @@
              xmlns:vm="clr-namespace:StudentDraw.ViewModels"
              x:Class="StudentDraw.Pages.StudentsBoardPage"
              Title="StudentsBoardPage">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Resources/Css/StudentsBoardPage.css" />
+    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:StudentsBoardViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding ManageStudentsCommand}" IconImageSource="{FontImage Glyph='+', Size=22}"/>
+    </ContentPage.ToolbarItems>
     <StackLayout Orientation="Vertical">
         <Picker ItemsSource="{Binding Grades}" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout HorizontalOptions="Start">
+            <Border Stroke="#333" StrokeThickness="1">
+                <Grid ColumnDefinitions="100, 100, 200, 100, 100" RowDefinitions="50">
+                    <Border Grid.Column="0" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                        <Label Text="Numer" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Column="1" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                        <Label Text="Imię" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Column="2" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                        <Label Text="Nazwisko" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Column="3" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                        <Label Text="Obecność" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                    <Border Grid.Column="4" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                        <Label Text="Lol" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </Border>
+                </Grid>
+            </Border>
+            <CollectionView ItemsSource="{Binding Students}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Stroke="#333" StrokeThickness="1">
+                            <Grid ColumnDefinitions="100, 100, 200, 100, 100" RowDefinitions="50">
+                                <Border Grid.Column="0" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                                    <Label Text="{Binding Id}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <Border Grid.Column="1" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                                    <Label Text="{Binding Name}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <Border Grid.Column="2" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                                    <Label Text="{Binding Surname}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <Border Grid.Column="3" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                                    <CheckBox IsChecked="{Binding IsPresent}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                                <Border Grid.Column="4" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                                    <Label Text="{Binding DrawsTillEnabled}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        
+        <StackLayout StyleId="luckyNumberBox">
             <Entry x:Name="luckyNumber"/>
             <Button Text="OK" Command="{Binding SetLuckyNumberCommand}" 
-                    CommandParameter="{Binding Source={x:Reference luckyNumber}, Path=Text}"/>
+            CommandParameter="{Binding Source={x:Reference luckyNumber}, Path=Text}"/>
         </StackLayout>
-        <ListView ItemsSource="{Binding Students}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Border Stroke="#333" StrokeThickness="1" Padding="10">
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Id}"/>
-                                <Label Text="{Binding Name}"/>
-                                <Label Text="{Binding Surname}"/>
-                                <CheckBox IsChecked="{Binding IsPresent}"/>
-                                <Label Text="{Binding DrawsTillEnabled}"/>
-                            </StackLayout>
-                        </Border>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Text="Draw" Command="{Binding DrawStudentCommand}"/>
-        <Label Text="{Binding DrawedStudentId}"/>
+        <StackLayout StyleId="drawStudentBox">
+            <Button Text="Draw" Command="{Binding DrawStudentCommand}"/>
+            <Label Text="{Binding DrawedStudentId}"/>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
