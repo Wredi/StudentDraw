@@ -58,7 +58,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-        
+
         <StackLayout StyleId="luckyNumberBox" VerticalOptions="Center">
             <Label Text="Lucky number: "/>
             <Label Text="{Binding LuckyNumber}"/>

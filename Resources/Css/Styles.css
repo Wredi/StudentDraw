@@ -14,7 +14,11 @@
     background-color: blue;
 }
 
-.manageStudentsContainer, .manageGradesContainer{
+^inputview {
+    background-color: #222;
+}
+
+.manageStudentsContainer, .manageGradesContainer {
     -maui-orientation: vertical;
 }
 
