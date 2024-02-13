@@ -50,7 +50,7 @@
                                     <Label Text="{Binding Surname}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Border>
                                 <Border Grid.Column="3" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
-                                    <CheckBox IsChecked="{Binding IsPresent}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <CheckBox CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding IsPresent}" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 </Border>
                                 <Border Grid.Column="4" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
                                     <Label Text="{Binding DrawsTillEnabled}" HorizontalOptions="Center" VerticalOptions="Center"/>

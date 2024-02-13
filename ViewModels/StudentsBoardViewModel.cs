@@ -39,6 +39,11 @@ namespace StudentDraw.ViewModels
             }
         }
 
+        private void SaveStudents()
+        {
+            App.StudentRepo.SaveForGrade(SelectedGrade, Students.Select(s => s.Model));
+        }
+
         [RelayCommand]
         private void SelectedGradeChanged(string selectedGrade)
         {
@@ -52,6 +57,12 @@ namespace StudentDraw.ViewModels
         {
             int parsed = int.Parse(input);
             LuckyNumber = parsed;
+        }
+
+        [RelayCommand]
+        private void StudentPresenceChanged()
+        {
+            SaveStudents();
         }
 
         [ObservableProperty]
@@ -87,7 +98,7 @@ namespace StudentDraw.ViewModels
             {
                 DrawedStudentId = 0;
             }
-            App.StudentRepo.SaveForGrade(SelectedGrade, Students.Select(s => s.Model));
+            SaveStudents();
         }
     }
 }

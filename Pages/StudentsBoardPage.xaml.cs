@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml.Controls.Primitives;
 using StudentDraw.ViewModels;
 using System.Diagnostics;
 
@@ -24,5 +25,12 @@ public partial class StudentsBoardPage : ContentPage
 
         StudentsBoardViewModel viewModel = (StudentsBoardViewModel)BindingContext;
         viewModel.SelectedGradeChangedCommand.Execute(selectedItem);
+    }
+
+    void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
+    {
+        Trace.WriteLine("fsdfdsfsdfsd");
+        StudentsBoardViewModel viewModel = (StudentsBoardViewModel)BindingContext;
+        viewModel.StudentPresenceChangedCommand.Execute(null);
     }
 }
