@@ -48,10 +48,14 @@
     -maui-spacing: 5;
 }
 
-    #luckyNumberBox > label, #drawStudentBox > label {
-        font-size: 20;
-    }
+#luckyNumberBox > label, #drawStudentBox > label {
+    font-size: 20;
+}
 
 #luckyNumberBox, #drawStudentBox {
     -maui-orientation: horizontal;
+}
+
+#shell {
+    -maui-shell-title: red;
 }
