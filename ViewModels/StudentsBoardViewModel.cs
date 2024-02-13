@@ -72,7 +72,7 @@ namespace StudentDraw.ViewModels
         private int luckyNumber;
 
         [ObservableProperty]
-        private int drawedStudentId;
+        private string drawedStudentIdString;
 
         [RelayCommand]
         private async Task ManageStudents()
@@ -92,11 +92,11 @@ namespace StudentDraw.ViewModels
             {
                 StudentViewModel drawedStudent = students[rng.Next(0, students.Count)];
                 drawedStudent.DrawsTillEnabled = 3;
-                DrawedStudentId = drawedStudent.Id;
+                DrawedStudentIdString = drawedStudent.Id.ToString();
             }
             else
             {
-                DrawedStudentId = 0;
+                DrawedStudentIdString = string.Empty;
             }
             SaveStudents();
         }

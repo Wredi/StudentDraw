@@ -9,6 +9,12 @@
     </ContentPage.BindingContext>
 
     <StackLayout Orientation="Vertical" VerticalOptions="Start">
+        <StackLayout Orientation="Horizontal">
+            <Button Text="Add" BackgroundColor="Green" Command="{Binding AddGradeCommand}"/>
+            <Button Text="Edit" Background="CadetBlue" Command="{Binding EditSelectedGradeCommand}"/>
+            <Button Text="Delete" Background="Red" Command="{Binding DeleteSelectedGradeCommand}"/>
+            <Button Text="Approve" Background="Blue" Command="{Binding ApproveSelectedGradeCommand}"/>
+        </StackLayout>
         <ListView ItemsSource="{Binding Grades}" ItemSelected="OnItemSelectedChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -20,11 +26,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackLayout Orientation="Horizontal">
-            <Button Text="Add" BackgroundColor="Green" Command="{Binding AddGradeCommand}"/>
-            <Button Text="Edit" Background="CadetBlue" Command="{Binding EditSelectedGradeCommand}"/>
-            <Button Text="Delete" Background="Red" Command="{Binding DeleteSelectedGradeCommand}"/>
-            <Button Text="Approve" Background="Blue" Command="{Binding ApproveSelectedGradeCommand}"/>
-        </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -13,24 +13,24 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Command="{Binding ManageStudentsCommand}" IconImageSource="{FontImage Glyph='+', Size=22}"/>
     </ContentPage.ToolbarItems>
-    <StackLayout Orientation="Vertical">
+    <StackLayout Orientation="Vertical" StyleId="mainContainer">
         <Picker ItemsSource="{Binding Grades}" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
         <StackLayout HorizontalOptions="Start">
             <Border Stroke="#333" StrokeThickness="1">
                 <Grid ColumnDefinitions="100, 100, 200, 100, 100" RowDefinitions="50">
-                    <Border Grid.Column="0" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                    <Border Grid.Column="0" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
                         <Label Text="Numer" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Column="1" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                    <Border Grid.Column="1" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
                         <Label Text="Imię" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Column="2" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                    <Border Grid.Column="2" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
                         <Label Text="Nazwisko" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Column="3" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                    <Border Grid.Column="3" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
                         <Label Text="Obecność" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Border>
-                    <Border Grid.Column="4" Stroke="#333" StrokeThickness="1" StyleClass="tableCell">
+                    <Border Grid.Column="4" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
                         <Label Text="Lol" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Border>
                 </Grid>
@@ -62,14 +62,17 @@
             </CollectionView>
         </StackLayout>
         
-        <StackLayout StyleId="luckyNumberBox">
+        <StackLayout StyleId="luckyNumberBox" VerticalOptions="Center">
+            <Label Text="Lucky number: "/>
+            <Label Text="{Binding LuckyNumber}"/>
             <Entry x:Name="luckyNumber"/>
             <Button Text="OK" Command="{Binding SetLuckyNumberCommand}" 
             CommandParameter="{Binding Source={x:Reference luckyNumber}, Path=Text}"/>
         </StackLayout>
         <StackLayout StyleId="drawStudentBox">
+            <Label Text="Drawed student id: "/>
+            <Label Text="{Binding DrawedStudentIdString}"/>
             <Button Text="Draw" Command="{Binding DrawStudentCommand}"/>
-            <Label Text="{Binding DrawedStudentId}"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>
