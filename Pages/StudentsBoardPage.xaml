@@ -4,9 +4,6 @@
              xmlns:vm="clr-namespace:StudentDraw.ViewModels"
              x:Class="StudentDraw.Pages.StudentsBoardPage"
              Title="StudentsBoardPage">
-    <ContentPage.Resources>
-        <StyleSheet Source="/Resources/Css/StudentsBoardPage.css" />
-    </ContentPage.Resources>
     <ContentPage.BindingContext>
         <vm:StudentsBoardViewModel/>
     </ContentPage.BindingContext>

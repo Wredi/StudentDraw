@@ -1,1 +1,57 @@
-﻿
+﻿.addButton{
+    background-color: forestgreen;
+}
+
+.editButton{
+    background-color: cadetblue;
+}
+
+.deleteButton {
+    background-color: red;
+}
+
+.selectButton {
+    background-color: blue;
+}
+
+.manageStudentsContainer, .manageGradesContainer{
+    -maui-orientation: vertical;
+}
+
+.selectedGradeText {
+    font-size: 25;
+}
+
+.studentBoxBorder, .gradeBoxBorder {
+    padding: 10;
+    font-size: 20;
+}
+
+.studentBoxContainer{
+    -maui-orientation: horizontal;
+    -maui-spacing: 10;
+}
+
+.tableCell {
+    margin: -1;
+}
+
+.headerCell {
+    font-style: bold;
+}
+
+#mainContainer {
+    -maui-spacing: 10;
+}
+
+#luckyNumberBox, #drawStudentBox {
+    -maui-spacing: 5;
+}
+
+    #luckyNumberBox > label, #drawStudentBox > label {
+        font-size: 20;
+    }
+
+#luckyNumberBox, #drawStudentBox {
+    -maui-orientation: horizontal;
+}

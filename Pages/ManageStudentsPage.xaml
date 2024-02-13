@@ -7,21 +7,20 @@
     <ContentPage.BindingContext>
         <viewModels:ManageStudentsViewModel/>
     </ContentPage.BindingContext>
-    <StackLayout Orientation="Vertical" VerticalOptions="Start">
+    <StackLayout VerticalOptions="Start" StyleClass="manageStudentsContainer">
         <StackLayout Orientation="Horizontal">
-            <Button Text="Add student" Command="{Binding AddSelectedStudentCommand}"/>
-            <Button Text="Edit student" Command="{Binding EditSelectedStudentCommand}"/>
-            <Button Text="Delete student" Command="{Binding DeleteSelectedStudentCommand}"/>
-            <Button Text="Select grade" Command="{Binding SelectGradeCommand}"/>
+            <Button StyleClass="addButton" Text="Add student" Command="{Binding AddSelectedStudentCommand}"/>
+            <Button StyleClass="editButton" Text="Edit student" Command="{Binding EditSelectedStudentCommand}"/>
+            <Button StyleClass="deleteButton" Text="Delete student" Command="{Binding DeleteSelectedStudentCommand}"/>
+            <Button StyleClass="selectButton" Text="Select grade" Command="{Binding SelectGradeCommand}"/>
         </StackLayout>
-        <Label Text="{Binding SelectedGrade}" FontSize="Large"/>
-
+        <Label Text="{Binding SelectedGrade}" StyleClass="selectedGradeText"/>
         <ListView ItemsSource="{Binding Students}" ItemSelected="OnItemSelectedChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Border Stroke="#333" StrokeThickness="1" Padding="10">
-                            <StackLayout Orientation="Horizontal">
+                        <Border Stroke="#333" StrokeThickness="1" StyleClass="studentBoxBorder">
+                            <StackLayout StyleClass="studentBoxContainer">
                                 <Label Text="{Binding Id}"/>
                                 <Label Text="{Binding Name}"/>
                                 <Label Text="{Binding Surname}"/>

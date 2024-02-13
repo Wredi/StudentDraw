@@ -8,19 +8,19 @@
         <viewModles:SelectGradeViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout Orientation="Vertical" VerticalOptions="Start">
+    <StackLayout VerticalOptions="Start" StyleClass="manageGradesContainer">
         <StackLayout Orientation="Horizontal">
-            <Button Text="Add" BackgroundColor="Green" Command="{Binding AddGradeCommand}"/>
-            <Button Text="Edit" Background="CadetBlue" Command="{Binding EditSelectedGradeCommand}"/>
-            <Button Text="Delete" Background="Red" Command="{Binding DeleteSelectedGradeCommand}"/>
-            <Button Text="Approve" Background="Blue" Command="{Binding ApproveSelectedGradeCommand}"/>
+            <Button StyleClass="addButton" Text="Add grade" Command="{Binding AddGradeCommand}"/>
+            <Button StyleClass="editButton" Text="Edit grade" Command="{Binding EditSelectedGradeCommand}"/>
+            <Button StyleClass="deleteButton" Text="Delete grade" Command="{Binding DeleteSelectedGradeCommand}"/>
+            <Button StyleClass="selectButton" Text="Choose grade" Command="{Binding ApproveSelectedGradeCommand}"/>
         </StackLayout>
         <ListView ItemsSource="{Binding Grades}" ItemSelected="OnItemSelectedChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Border Stroke="#333" StrokeThickness="1" Padding="10">
-                            <Label Text="{Binding .}" FontSize="Medium"/>
+                        <Border Stroke="#333" StrokeThickness="1" StyleClass="gradeBoxBorder">
+                            <Label Text="{Binding .}"/>
                         </Border>
                     </ViewCell>
                 </DataTemplate>
