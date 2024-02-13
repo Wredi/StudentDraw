@@ -54,16 +54,22 @@ namespace StudentDraw.ViewModels
         private async Task AddGrade()
         {
             string result = await Shell.Current.DisplayPromptAsync("Add grade", "Enter new grade name:");
-            App.StudentRepo.AddGrade(result);
-            LoadGrades();
+            if(!string.IsNullOrEmpty(result))
+            {
+                App.StudentRepo.AddGrade(result);
+                LoadGrades();
+            }
         }
 
         [RelayCommand]
         private async Task EditSelectedGrade()
         {
             string result = await Shell.Current.DisplayPromptAsync("Edit grade", "Edit name:", initialValue: currSelectedGrade);
-            App.StudentRepo.EditGradeName(currSelectedGrade, result);
-            LoadGrades();
+            if (!string.IsNullOrEmpty(result))
+            {
+                App.StudentRepo.EditGradeName(currSelectedGrade, result);
+                LoadGrades();
+            }
         }
 
         public SelectGradeViewModel()
