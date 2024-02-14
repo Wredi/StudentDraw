@@ -26,7 +26,7 @@ namespace StudentDraw.Data
         {
             return Directory
                     .EnumerateFiles(_filesDirectory, "*.grade.txt")
-                    .Select(dirFilename => Path.GetFileName(dirFilename))
+                    .Select(Path.GetFileName)
                     .Select(filename => filename.Substring(0, filename.IndexOf('.')));
         }
 
@@ -63,7 +63,7 @@ namespace StudentDraw.Data
 
         public void AddGrade(string gradeName)
         {
-            File.Create(FilepathFromGrade(gradeName));
+            File.Create(FilepathFromGrade(gradeName)).Close();
         }
 
         public void EditGradeName(string prevGradeName, string newGradeName)

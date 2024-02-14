@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:StudentDraw.ViewModels"
              x:Class="StudentDraw.Pages.StudentFormPage"
-             Title="StudentFormPage">
+             Title="Student Form">
     <StackLayout Orientation="Vertical" VerticalOptions="Start">
         <Entry Placeholder="Enter id" Text="{Binding IdEntry}"/>
         <Entry Placeholder="Enter name" Text="{Binding NameEntry}"/>

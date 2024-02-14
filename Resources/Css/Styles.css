@@ -46,9 +46,22 @@
 
 #mainContainer {
     -maui-spacing: 10;
+    margin: 5;
 }
 
-#luckyNumberBox, #drawStudentBox {
+#drawStudentBox{
+    margin-bottom: 10;
+}
+
+#manageListBoxControls {
+    -maui-spacing: 10;
+}
+
+#luckyNumberBox, #drawStudentBox, #drawStudentBox {
+    -maui-spacing: 5;
+}
+
+#manageListBox {
     -maui-spacing: 5;
 }
 
@@ -56,8 +69,12 @@
     font-size: 20;
 }
 
-#luckyNumberBox, #drawStudentBox {
+#luckyNumberBox, #drawStudentBox, #manageListBoxControls {
     -maui-orientation: horizontal;
+}
+
+#manageListBox {
+    -maui-orientation: vertical;
 }
 
 #shell {

@@ -33,7 +33,7 @@ namespace StudentDraw.ViewModels
         private void LoadStudents()
         {
             Students.Clear();
-            foreach (var student in App.StudentRepo.LoadForGrade(SelectedGrade))
+            foreach (var student in App.StudentRepo.LoadForGrade(SelectedGrade).OrderBy(x => x.Id))
             {
                 Students.Add(new StudentViewModel(student));
             }
@@ -41,6 +41,7 @@ namespace StudentDraw.ViewModels
 
         private void SaveStudents()
         {
+            if (string.IsNullOrEmpty(SelectedGrade)) return;
             App.StudentRepo.SaveForGrade(SelectedGrade, Students.Select(s => s.Model));
         }
 
@@ -53,10 +54,14 @@ namespace StudentDraw.ViewModels
         }
 
         [RelayCommand]
-        private void SetLuckyNumber(string input)
+        private async Task SetLuckyNumber()
         {
-            int parsed = int.Parse(input);
-            LuckyNumber = parsed;
+            string result = await Shell.Current.DisplayPromptAsync("Set lucky number", "Enter new number:");
+            if (!string.IsNullOrEmpty(result))
+            {
+                int parsed = int.Parse(result);
+                LuckyNumber = parsed;
+            }
         }
 
         [RelayCommand]

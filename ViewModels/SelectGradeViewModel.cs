@@ -40,6 +40,7 @@ namespace StudentDraw.ViewModels
             //    PassGradeCommand.Execute(currSelectedGrade);
             //    await Shell.Current.Navigation.PopModalAsync();
             //}
+            if (currSelectedGrade == null) return;
             await Shell.Current.GoToAsync($"..?selected={currSelectedGrade}");
         }
 
@@ -64,6 +65,7 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private async Task EditSelectedGrade()
         {
+            if (currSelectedGrade == null) return;
             string result = await Shell.Current.DisplayPromptAsync("Edit grade", "Edit name:", initialValue: currSelectedGrade);
             if (!string.IsNullOrEmpty(result))
             {

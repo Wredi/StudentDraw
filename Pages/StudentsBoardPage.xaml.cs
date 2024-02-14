@@ -29,7 +29,6 @@ public partial class StudentsBoardPage : ContentPage
 
     void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-        Trace.WriteLine("fsdfdsfsdfsd");
         StudentsBoardViewModel viewModel = (StudentsBoardViewModel)BindingContext;
         viewModel.StudentPresenceChangedCommand.Execute(null);
     }

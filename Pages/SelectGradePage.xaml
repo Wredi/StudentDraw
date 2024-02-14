@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModles="clr-namespace:StudentDraw.ViewModels"
              x:Class="StudentDraw.Pages.SelectGradePage"
-             Title="SelectGradePage">
+             Title="Select Grade">
     <ContentPage.BindingContext>
         <viewModles:SelectGradeViewModel/>
     </ContentPage.BindingContext>

@@ -4,6 +4,7 @@ using StudentDraw.Pages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,8 +43,15 @@ namespace StudentDraw.ViewModels
                 return;
             }
 
+            if (!App.StudentRepo.GetGradeNames().Contains(SelectedGrade))
+            {
+                Students.Clear();
+                SelectedGrade = string.Empty;
+                return;
+            }
+
             Students.Clear();
-            foreach(var student in App.StudentRepo.LoadForGrade(SelectedGrade))
+            foreach(var student in App.StudentRepo.LoadForGrade(SelectedGrade).OrderBy(x => x.Id))
             {
                 Students.Add(new StudentViewModel(student));
             }
@@ -79,6 +87,7 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private void DeleteSelectedStudent()
         {
+            if (selectedStudent == null) return;
             Students.Remove(selectedStudent);
             App.StudentRepo.SaveForGrade(SelectedGrade, Students.Select(x => x.Model));
         }
@@ -96,6 +105,7 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private async Task EditSelectedStudent()
         {
+            if (selectedStudent == null) return;
             await Shell.Current.Navigation.PushAsync(new StudentFormPage
             {
                 BindingContext = new StudentFormViewModel(selectedStudent, SelectedGrade)
