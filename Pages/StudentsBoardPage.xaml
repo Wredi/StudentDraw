@@ -30,16 +30,16 @@
                     <Border Stroke="#333" StrokeThickness="1">
                         <Grid ColumnDefinitions="100, 100, 200, 100" RowDefinitions="30">
                             <Border Grid.Column="0" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
-                                <Label Text="Numer" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="Id" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
                             <Border Grid.Column="1" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
-                                <Label Text="Imię" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="Number" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
                             <Border Grid.Column="2" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
-                                <Label Text="Nazwisko" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="Surname" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
                             <Border Grid.Column="3" Stroke="#333" StrokeThickness="1" StyleClass="tableCell, headerCell">
-                                <Label Text="Obecność" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="Presence" HorizontalOptions="Center" VerticalOptions="Center"/>
                             </Border>
                         </Grid>
                     </Border>
