@@ -76,9 +76,6 @@ namespace StudentDraw.ViewModels
         [ObservableProperty]
         private int luckyNumber;
 
-        [ObservableProperty]
-        private string drawedStudentIdString;
-
         [RelayCommand]
         private async Task ManageStudents()
         {
@@ -86,24 +83,26 @@ namespace StudentDraw.ViewModels
         }
 
         [RelayCommand]
-        private void DrawStudent()
+        private async Task DrawStudent()
         {
             List<StudentViewModel> students = Students.Where((s) => s.IsPresent && s.Id != LuckyNumber && s.DrawsTillEnabled == 0).ToList();
-            foreach (var student in Students)
-            {
-                student.DrawsTillEnabled -= student.DrawsTillEnabled > 0 ? 1 : 0;
-            }
             if (students.Count > 0)
             {
+                foreach (var student in Students)
+                {
+                    student.DrawsTillEnabled -= student.DrawsTillEnabled > 0 ? 1 : 0;
+                }
+
                 StudentViewModel drawedStudent = students[rng.Next(0, students.Count)];
                 drawedStudent.DrawsTillEnabled = 3;
-                DrawedStudentIdString = drawedStudent.Id.ToString();
+
+                await Shell.Current.DisplayAlert("Draw result", $"Drawed student: {drawedStudent.Id} {drawedStudent.Name} {drawedStudent.Surname}", "OK");
+                SaveStudents();
             }
             else
             {
-                DrawedStudentIdString = string.Empty;
+                await Shell.Current.DisplayAlert("Draw result", "Can't draw any user", "OK");
             }
-            SaveStudents();
         }
     }
 }

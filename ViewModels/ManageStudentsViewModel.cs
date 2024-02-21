@@ -95,6 +95,10 @@ namespace StudentDraw.ViewModels
         [RelayCommand]
         private async Task AddSelectedStudent()
         {
+            if (string.IsNullOrEmpty(selectedGrade))
+            {
+                return;
+            }
             await Shell.Current.Navigation.PushAsync(new StudentFormPage
             {
                 BindingContext = new StudentFormViewModel(SelectedGrade)

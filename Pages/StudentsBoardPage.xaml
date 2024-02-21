@@ -14,9 +14,9 @@
         <StackLayout StyleId="mainContainer">
             <StackLayout StyleId="manageListBox">
                 <StackLayout StyleId="drawStudentBox">
-                    <Label Text="Drawed student id: "/>
-                    <Label Text="{Binding DrawedStudentIdString}"/>
-                    <Button Text="Draw" Command="{Binding DrawStudentCommand}" HorizontalOptions="Start"/>
+                    <!--<Label Text="Drawed student id: "/>
+                    <Label Text="{Binding DrawedStudentIdString}"/>-->
+                    <Button Text="DRAW" Command="{Binding DrawStudentCommand}" HorizontalOptions="Start" StyleClass="drawButton"/>
                 </StackLayout>
                 <StackLayout StyleId="manageListBoxControls">
                     <Picker ItemsSource="{Binding Grades}" SelectedIndexChanged="OnPickerSelectedIndexChanged"/>

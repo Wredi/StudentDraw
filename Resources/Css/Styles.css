@@ -40,6 +40,11 @@
     margin: -1;
 }
 
+.drawButton {
+    background-color: red;
+    font-size: 20;
+}
+
 .headerCell {
     font-style: bold;
 }
@@ -50,7 +55,7 @@
 }
 
 #drawStudentBox{
-    margin-bottom: 10;
+    /*margin-bottom: 10;*/
 }
 
 #manageListBoxControls {
